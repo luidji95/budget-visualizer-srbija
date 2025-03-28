@@ -1,0 +1,35 @@
+.sta-je-moglo-section {
+  padding: 2rem;
+  margin-top: 3rem;
+  background-color: #fff;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.moglo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.moglo-card {
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.ikonica {
+  font-size: 2rem;
+}
+@media (max-width: 600px) {
+  .moglo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .moglo-card h3 {
+    font-size: 1rem;
+  }
+}

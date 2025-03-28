@@ -1,0 +1,60 @@
+.intro-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.intro-text {
+  flex: 1;
+  min-width: 250px;
+}
+
+.intro-text h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.intro-text p {
+  color: #444;
+  line-height: 1.6;
+}
+
+.chart-wrapper {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+.chart-with-legend {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.chart-with-legend canvas {
+  max-width: 280px; /* smanji na manjim ekranima */
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .chart-with-legend {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .legend-list {
+    align-items: center;
+  }
+}

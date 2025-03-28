@@ -1,0 +1,83 @@
+.afera-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.afera-card:hover {
+  transform: translateY(-2px);
+}
+
+.afera-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.afera-icon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.afera-title {
+  font-size: 1rem;
+  font-weight: 600;
+  flex: 1;
+  margin: 0;
+}
+
+.afera-godina {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.afera-opis {
+  font-size: 0.9rem;
+  color: #444;
+  margin: 0.5rem 0;
+}
+
+.afera-kategorija {
+  align-self: flex-start;
+  font-size: 0.8rem;
+  background-color: #f0f0f0;
+  padding: 0.25rem 0.6rem;
+  border-radius: 5px;
+  color: #333;
+  font-weight: 500;
+}
+.afera-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.afera-dugme {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.6rem;
+  border: none;
+  background-color: #e0e0e0;
+  color: #333;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.afera-dugme:hover {
+  background-color: #d0d0d0;
+}
+@media (max-width: 600px) {
+  .afera-card {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+}
