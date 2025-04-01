@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { rawBudgetData, getFreshBudgetData } from "../data/budgetData";
-import "./BudgetSimulator.css";
+import "./budgetSimulator.css";
 import BudgetComparisonChart from "./BudgetComparisonChart";
 
 const totalOriginal = rawBudgetData.reduce((sum, item) => sum + item.amount, 0);
