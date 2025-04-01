@@ -1,5 +1,5 @@
 import BudgetChart from "./BudgetChart";
-import "./BudgetIntroSection.css";
+import "./budgetIntroSection.css";
 import BudgetLegend from "./BudgetLegend";
 
 const BudgetIntroSection = () => {
