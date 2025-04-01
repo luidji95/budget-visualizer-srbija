@@ -15,7 +15,7 @@ const StaJeMoglo = () => {
     <section className="sta-je-moglo-section">
       <h2>💡 Šta smo mogli sa tim novcem?</h2>
       <p>
-        Umesto što je pronevereno preko{" "}
+        Umesto što je kroz gore pomenute afere pronevereno preko{" "}
         <strong>{totalSum.toLocaleString()} €</strong>, mogli smo izgraditi:
       </p>
       <div className="moglo-grid">

@@ -1,13 +1,13 @@
-import { budgetData } from "../data/budgetData";
+import { rawBudgetData } from "../data/budgetData";
 import "./BudgetLegend.css";
 
-const total = budgetData.reduce((sum, item) => sum + item.amount, 0);
+const total = rawBudgetData.reduce((sum, item) => sum + item.amount, 0);
 
 const BudgetLegend = () => {
   return (
     <ul className="legend-list">
-      {budgetData.map((item, index) => {
-        const percent = ((item.amount / total) * 100).toFixed(0);
+      {rawBudgetData.map((item, index) => {
+        const percent = ((item.amount / total) * 100).toFixed(1); // preciznije
         const colors = [
           "#0066cc",
           "#004080",
@@ -15,6 +15,11 @@ const BudgetLegend = () => {
           "#336699",
           "#66cccc",
           "#99ccff",
+          "#004466",
+          "#6699cc",
+          "#003366",
+          "#3366cc",
+          "#80bfff",
         ];
         return (
           <li key={item.label} className="legend-item">

@@ -47,3 +47,33 @@ input[type="range"] {
     width: 100%;
   }
 }
+.simulator-content {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: center;
+}
+
+.simulator-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.simulator-right {
+  flex: 1;
+  min-width: 0;
+}
+.simulator-right canvas {
+  height: 300px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .simulator-content {
+    flex-direction: column;
+  }
+
+  .simulator-right {
+    margin-top: 2rem;
+  }
+}

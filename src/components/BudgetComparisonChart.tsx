@@ -8,7 +8,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { budgetData } from "../data/budgetData";
+import { immutableBudgetData } from "../data/budgetData";
 import { FC } from "react";
 
 ChartJS.register(
@@ -26,14 +26,28 @@ type BudgetItem = {
 };
 
 interface Props {
-  userBudget: BudgetItem[];
+  userBudget?: BudgetItem[];
 }
 
-const BudgetComparisonChart: FC<Props> = ({ userBudget }) => {
-  const labels = budgetData.map((item) => item.label);
+const formatLargeAmount = (value: number): string => {
+  if (value >= 1_000_000_000) {
+    return `${(value / 1_000_000_000).toFixed(1)} milijardi €`;
+  } else if (value >= 1_000_000) {
+    return `${(value / 1_000_000).toFixed(1)} miliona €`;
+  }
+  return `${value.toLocaleString("sr-RS")} €`;
+};
 
-  const officialData = budgetData.map((item) => item.amount);
-  const userData = userBudget.map((item) => item.amount);
+const BudgetComparisonChart: FC<Props> = ({ userBudget }) => {
+  const safeUserBudget = Array.isArray(userBudget)
+    ? userBudget
+    : immutableBudgetData.map((item) => ({ ...item }));
+
+  const labels = immutableBudgetData.map((item) => item.label);
+  const officialData = immutableBudgetData.map((item) => item.amount);
+  const userData = safeUserBudget.map((item) => item.amount);
+
+  const totalOfficial = officialData.reduce((sum, v) => sum + v, 0);
 
   const data = {
     labels,
@@ -59,7 +73,15 @@ const BudgetComparisonChart: FC<Props> = ({ userBudget }) => {
       },
       title: {
         display: true,
-        text: "Poređenje: Tvoj vs Zvanični budžet",
+        text: `Poređenje budžeta (ukupno: ${formatLargeAmount(totalOfficial)})`,
+      },
+      tooltip: {
+        callbacks: {
+          label: function (context: any) {
+            const value = context.raw;
+            return `${context.dataset.label}: ${formatLargeAmount(value)}`;
+          },
+        },
       },
     },
   };

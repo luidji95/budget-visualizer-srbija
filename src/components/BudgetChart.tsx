@@ -1,70 +1,76 @@
 import {
   Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
   ArcElement,
   Tooltip,
   Legend,
-  ChartOptions,
-  Plugin,
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { budgetData } from "../data/budgetData";
+import { rawBudgetData } from "../data/budgetData";
 import "./BudgetChart.css";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, ArcElement, Tooltip, Legend);
 
-// 👉 Custom plugin za prikaz teksta u sredini
-const centerTextPlugin: Plugin = {
-  id: "centerText",
-  beforeDraw(chart) {
-    const { width } = chart;
-    const { ctx } = chart;
-    const total = budgetData.reduce((sum, item) => sum + item.amount, 0);
-    const displayText = `${(total / 1_000_000).toFixed(0)} miliona €`;
+const colors = [
+  "#0066cc",
+  "#004080",
+  "#0099cc",
+  "#336699",
+  "#66cccc",
+  "#99ccff",
+  "#004466",
+  "#6699cc",
+  "#003366",
+  "#3366cc",
+  "#80bfff",
+];
 
-    ctx.save();
-    ctx.font = "bold 20px system-ui";
-    ctx.fillStyle = "#222";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText(displayText, width / 2, chart.height! / 2);
-  },
-};
-
-ChartJS.register(centerTextPlugin);
-
-const data = {
-  labels: budgetData.map((item) => item.label),
-  datasets: [
-    {
-      label: "Budžet (€)",
-      data: budgetData.map((item) => item.amount),
-      backgroundColor: [
-        "#0066cc",
-        "#004080",
-        "#0099cc",
-        "#336699",
-        "#66cccc",
-        "#99ccff",
-      ],
-      borderWidth: 0,
-      cutout: "65%", // debljina prstena
-    },
-  ],
-};
-
-const options: ChartOptions<"doughnut"> = {
-  responsive: true,
-  plugins: {
-    legend: {
-      display: false, // sakrij default legendu
-    },
-  },
+const formatAmount = (value: number) => {
+  return value >= 1_000_000_000
+    ? (value / 1_000_000_000).toFixed(1) + " milijardi €"
+    : (value / 1_000_000).toFixed(0) + " miliona €";
 };
 
 const BudgetChart = () => {
+  const labels = rawBudgetData.map((item) => item.label);
+  const data = rawBudgetData.map((item) => item.amount);
+  const total = data.reduce((sum, v) => sum + v, 0);
+
+  const chartData = {
+    labels,
+    datasets: [
+      {
+        data,
+        backgroundColor: colors,
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const options = {
+    cutout: "70%",
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        callbacks: {
+          label: (context: any) => {
+            const label = context.label;
+            const value = context.raw;
+            const percent = ((value / total) * 100).toFixed(1);
+            return `${label}: ${formatAmount(value)} (${percent}%)`;
+          },
+        },
+      },
+    },
+  };
+
   return (
-    <div className="chart-container">
-      <Doughnut data={data} options={options} />
+    <div className="budget-chart-wrapper">
+      <Doughnut data={chartData} options={options} />
+      <div className="chart-center-label">{formatAmount(total)}</div>
     </div>
   );
 };

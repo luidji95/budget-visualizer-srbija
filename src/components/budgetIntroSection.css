@@ -43,7 +43,7 @@
 }
 
 .chart-with-legend canvas {
-  max-width: 280px; /* smanji na manjim ekranima */
+  max-width: 280px; smanji na manjim ekranima
   width: 100%;
   height: auto;
 }
