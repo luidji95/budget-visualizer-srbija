@@ -64,8 +64,8 @@ input[type="range"] {
   min-width: 0;
 }
 .simulator-right canvas {
-  height: 300px;
-  width: 100%;
+  height: 500px !important;
+  width: 100% !important;
 }
 
 @media (max-width: 768px) {
@@ -73,7 +73,8 @@ input[type="range"] {
     flex-direction: column;
   }
 
-  .simulator-right {
-    margin-top: 2rem;
+  .simulator-right canvas {
+    height: 400px !important;
+    width: 100% !important;
   }
 }
