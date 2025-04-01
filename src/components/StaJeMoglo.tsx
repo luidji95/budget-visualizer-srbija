@@ -1,4 +1,4 @@
-import "./StaJeMoglo.css";
+import "./staJeMoglo.css";
 
 const totalSum = 1048000000; // primer: vrednost proneverenog novca iz odabranih afera
 

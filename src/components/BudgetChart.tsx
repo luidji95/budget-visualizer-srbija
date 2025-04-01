@@ -8,7 +8,7 @@ import {
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { rawBudgetData } from "../data/budgetData";
-import "./BudgetChart.css";
+import "./budgetChart.css";
 
 ChartJS.register(CategoryScale, LinearScale, ArcElement, Tooltip, Legend);
 

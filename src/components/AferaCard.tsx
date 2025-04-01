@@ -1,5 +1,5 @@
 import { Afera } from "../data/afereData";
-import "./AferaCard.css";
+import "./aferaCard.css";
 
 const AferaCard = ({
   afera,

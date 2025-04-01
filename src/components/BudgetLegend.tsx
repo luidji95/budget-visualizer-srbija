@@ -1,5 +1,5 @@
 import { rawBudgetData } from "../data/budgetData";
-import "./BudgetLegend.css";
+import "./budgetLegend.css";
 
 const total = rawBudgetData.reduce((sum, item) => sum + item.amount, 0);
 

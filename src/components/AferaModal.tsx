@@ -1,4 +1,4 @@
-import "./AferaModal.css";
+import "./aferaModal.css";
 import { Afera } from "../data/afereData";
 
 interface Props {

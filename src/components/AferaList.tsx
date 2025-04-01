@@ -1,6 +1,6 @@
 import { afereData } from "../data/afereData";
 import AferaCard from "./AferaCard";
-import "./AferaList.css";
+import "./aferaList.css";
 import { useState } from "react";
 import AferaModal from "./AferaModal";
 import { Afera } from "../data/afereData";
