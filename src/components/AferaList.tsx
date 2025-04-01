@@ -3,6 +3,7 @@ import AferaCard from "./AferaCard";
 import "./AferaList.css";
 import { useState } from "react";
 import AferaModal from "./AferaModal";
+import { Afera } from "../data/afereData";
 
 const AferaList = () => {
   const [selectedAfera, setSelectedAfera] = useState<Afera | null>(null);
